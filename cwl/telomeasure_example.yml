@@ -1,0 +1,43 @@
+
+# samtools (samtools-1.10 path)
+samtools_path: "samtools-1.10/bin/:$PATH" 
+exclude_flag: 2816
+# input BAM or CRAM file
+input_bam: 
+   class: File
+   format: http://edamontology.org/format_2572
+   path: input.cram
+# parse sam
+# telomeasure_path (telomeasure bin path and python2.7 path)
+telomeasure_path: "telomeasure/bin/:bin/:$PATH"
+# count flag
+sample_id: "SAMPLE_NAME"
+read_length: 150
+duplicate_metrics_name: "SAMPLE_NAME_duplicate_metrics.txt"
+# coord_stream_cigar
+gc_matched_bed_cov_name: "SAMPLE_NAME_gc_matched_bed_cov.txt"
+gc_trusted_tiles_bed:
+   class: File
+   format: http://edamontology.org/format_3584
+   path: "telomeasure/data/GRCh38_gc_trusted_tiles_w_100_t_200_s_4.bed"
+# coord_stream_cigar extreme_free
+gc_matched_bed_cov_extreme_free_name: "SAMPLE_NAME_non_gc_matched_bed_cov.txt"
+gc_trusted_tiles_bed_extreme_free:
+   class: File
+   format: http://edamontology.org/format_3584
+   path: "telomeasure/data/GRCh38_extreme_free_trusted_tiles_w_100_t_200_s_4.bed"
+
+# aln_stream
+# telomeasure_gem_path (path to gem-mapper,  telomeasure bin, and path to python2.7)
+telomeasure_gem_path: "gem-1.0/:telomeasure/bin/:bin/:$PATH"
+telo_target_index: 
+   class: File
+   format: http://edamontology.org/format_2330
+   path: "telomeasure/data/telo_target_index.gem"
+total_telo_length_name: "SAMPLE_NAME_total_telo_length.txt"
+max_mismatch: 0.2
+mate_info_txt_name: "SAMPLE_NAME_mate_info.txt"
+
+telomeasure_summary_txt_name: "SAMPLE_NAME_telomeasure_summary.csv"
+out_dir: ""
+  
