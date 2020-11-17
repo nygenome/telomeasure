@@ -206,7 +206,7 @@ def main():
 
     assert ((os.path.isdir(out)) or (os.path.isdir(out) == '')), 'Failed to find output directory'
 
-    sys.stdout.write('subject, aligned_length, gc_cov, dup_percent, telo_count, telomere_length_non_dedup, tumor_telomere_length_46, telomere_length\n')
+    sys.stdout.write('subject,aligned_length,gc_cov,dup_percenttelo_count,telomere_length_non_dedup,tumor_telomere_length_46,telomere_length\n')
     try:
         metrics = sample_metrics(out_dir=out,
                                  sample=sample_id)
