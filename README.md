@@ -16,10 +16,10 @@ The total length of the alignment to the synthetic telomere is used with the est
 ![Telomeasure steps](equations.png)
 
 ## Dependancies
-Telomeasure requires gem-mapper (v1.3), samtools (>=v.1.10), R (>= 3.0.0) with the package lattice and python2.7 
+Telomeasure requires gem-mapper (v1.3) (part of gem-tools 1.6), samtools (>=v.1.10), R (>= 3.0.0) with the package lattice and python2.7 
 to be in the path (for `run.sh`) or in the path variables in the `telomeasure.yml` (for CWL runs).
 
-[GEM](https://github.com/gemtools/gemtools/releases/tag/v1.3)
+[GEM](http://barnaserver.com/gemtools/releases/GEMTools-static-core2-1.6.tar.gz)
 
 [Samtools](https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2)
 
