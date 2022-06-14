@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 ################################################################################
 #	USAGE:
 #   DESCRIPTION: Script to write a telomere pipeline for a particular
@@ -110,13 +110,13 @@ class sample_metrics(object):
         outlier_thresholds = {chrom : {'p': '', 'q' : ''} for chrom in chroms}
         with open(non_gc_matched_bed_cov_bed_file) as non_gc_matched_bed_cov_bed:
             for chrom in chroms:
-                for region in xrange(extreme_free_gc[chrom][0]):
+                for region in range(extreme_free_gc[chrom][0]):
                     line = non_gc_matched_bed_cov_bed.next()
                     start = float(line.split('\t')[1])
                     end = float(line.split('\t')[2])
                     cov = float(line.split('\t')[4])
                     cov_by_chrom[chrom]['p'].append(cov / (end - start))
-                for region in xrange(extreme_free_gc[chrom][1]):
+                for region in range(extreme_free_gc[chrom][1]):
                     try:
                         line = non_gc_matched_bed_cov_bed.next()
                         start = float(line.split('\t')[1])
@@ -212,7 +212,7 @@ def main():
                                  sample=sample_id)
     except IOError:
         log.warning('Coverage too low to estimate telomere length : ' + str(sample_id))
-        continue
+        sys.exit(0)
     if metrics.telomere_length == 'NA':
         telomere_length_non_dedup = 'NA'
         telomere_length_46 = 'NA'

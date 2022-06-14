@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 # Copyright (c) 2020, New York Genome Center
 # All rights reserved.
@@ -96,7 +96,7 @@ def make_counters(starts):
     '''
     chroms = [chrom for chrom in starts]
     counts = {}
-    feature_indices = {chrom : list(xrange(0,len(starts[chrom]))) for chrom in chroms}
+    feature_indices = {chrom : list(range(0,len(starts[chrom]))) for chrom in chroms}
     counts = {chrom : {index : 0 for index in list(feature_indices[chrom])} for chrom in chroms}
     return feature_indices, counts
 

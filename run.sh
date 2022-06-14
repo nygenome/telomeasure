@@ -32,7 +32,7 @@ read_length=$3
 cram=$4
 
 script_dir=$(dirname "$0")
-export PATH=${script_dir}/telomeasure/bin/:$PATH
+export PATH=${script_dir}/bin/:$PATH
 
 echo "Compute metrics..."
 time \
@@ -45,11 +45,11 @@ ${cram} \
 ${read_length} \
 ${out_dir}/${sample_id}_duplicate_metrics.txt \
 | coord_stream_cigar.py \
-${script_dir}/telomeasure/data/GRCh38_gc_trusted_tiles_w_100_t_200_s_4.bed \
+${script_dir}/data/GRCh38_gc_trusted_tiles_w_100_t_200_s_4.bed \
 ${out_dir}/${sample_id}_gc_matched_bed_cov.txt \
 ${read_length} \
 | coord_stream_cigar.py \
-${script_dir}/telomeasure/data/GRCh38_extreme_free_trusted_tiles_w_100_t_200_s_4.bed \
+${script_dir}/data/GRCh38_extreme_free_trusted_tiles_w_100_t_200_s_4.bed \
 ${out_dir}/${sample_id}_non_gc_matched_bed_cov.txt \
 ${read_length} \
 | pre_filter.py \
