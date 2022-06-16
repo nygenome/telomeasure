@@ -54,19 +54,26 @@ class sample_metrics(object):
     '''
         Gather needed values per pair and calculate estimated length.
     '''
-    def __init__(self, out_dir, sample, testing=False):
+    def __init__(self, 
+                 total_length_file,
+                 gc_matched_cov_file,
+                 non_gc_matched_cov_file,
+                 dup_correction_file,
+                 non_gc_matched_bed_cov_bed_file,
+                 testing=False):
         self.sample = sample
         self.out_dir = out_dir
-        self.total_length_file = self.out_dir + '/' + self.sample + '_total_telo_length.txt'
+        self.total_length_file = total_length_file
+        self.gc_matched_cov_file = gc_matched_cov_file
+        self.non_gc_matched_cov_file = non_gc_matched_cov_file
+        self.dup_correction_file = dup_correction_file
+        self.non_gc_matched_bed_cov_bed_file = non_gc_matched_bed_cov_bed_file
+        
         self.total_length = self.get_total_length(self.total_length_file)
-        self.gc_matched_cov_file = self.out_dir + '/' + self.sample + '_gc_matched_bed_plot_cov.txt'
         self.gc_matched_cov = self.get_cov(self.gc_matched_cov_file)
-        self.non_gc_matched_cov_file = self.out_dir + '/' +  self.sample + '_non_gc_matched_bed_plot_cov.txt'
         self.non_gc_matched_cov = self.get_cov(self.non_gc_matched_cov_file)
-        self.dup_correction_file = self.out_dir + '/' +  self.sample + '_duplicate_metrics.txt'
         self.dup_percent = self.get_dup_correction(self.dup_correction_file)
         self.telomere_length = self.calculate_length(self.total_length, self.gc_matched_cov, self.dup_percent)
-        self.non_gc_matched_bed_cov_bed_file = self.out_dir + '/' +  sample + '_non_gc_matched_bed_cov.txt'
         self.extreme_free_gc={
             'chr1':[363, 410],
             'chr2':[325, 578],
@@ -201,15 +208,20 @@ def main():
     '''
         Returns Telomere length information for a sample.
     '''
-    sample_id = sys.argv[1]
-    out = sys.argv[2]
+    total_length_file = sys.argv[1]
+    gc_matched_cov_file = sys.argv[2]
+    non_gc_matched_cov_file = sys.argv[3]
+    dup_correction_file = sys.argv[4]
+    non_gc_matched_bed_cov_bed_file = sys.argv[5]
 
-    assert ((os.path.isdir(out)) or (os.path.isdir(out) == '')), 'Failed to find output directory'
 
     sys.stdout.write('subject,aligned_length,gc_cov,dup_percenttelo_count,telomere_length_non_dedup,tumor_telomere_length_46,telomere_length\n')
     try:
-        metrics = sample_metrics(out_dir=out,
-                                 sample=sample_id)
+        metrics = sample_metrics(total_length_file,
+                                gc_matched_cov_file,
+                                non_gc_matched_cov_file,
+                                dup_correction_file,
+                                non_gc_matched_bed_cov_bed_file)
     except IOError:
         log.warning('Coverage too low to estimate telomere length : ' + str(sample_id))
         sys.exit(0)
