@@ -215,7 +215,7 @@ def main():
     non_gc_matched_bed_cov_bed_file = sys.argv[5]
 
 
-    sys.stdout.write('subject,aligned_length,gc_cov,dup_percenttelo_count,telomere_length_non_dedup,tumor_telomere_length_46,telomere_length\n')
+    sys.stdout.write('subject,aligned_length,gc_cov,dup_percent,telo_count,telomere_length_non_dedup,tumor_telomere_length_46,telomere_length\n')
     try:
         metrics = sample_metrics(total_length_file,
                                 gc_matched_cov_file,
