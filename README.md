@@ -1,5 +1,13 @@
 # Telomeasure
 
+```diff
+- WARNING: This repo has been MOVED and updated to support python3 and run with WDL:
+```
+
+https://bitbucket.nygenome.org/projects/COMPBIO/repos/telomeasure/browse 
+https://bitbucket.nygenome.org/projects/COMPBIO/repos/telomeasure_wdl/browse
+
+
 Telomeasure calculates estimated telomere length. The output includes three estimates.
 The telomere_length is calculated using the number of telomeres indicated by arm level coverage and with the total alignment length after removing the percent of alignments that would be from duplicate reads based on duplication rate.
 The tumor_telomere_length_46 assumes 46 telomeres.
@@ -15,41 +23,7 @@ The total length of the alignment to the synthetic telomere is used with the est
 
 ![Telomeasure steps](equations.png)
 
-## Dependancies
-Telomeasure requires gem-mapper (v1.3) (part of gem-tools 1.6), samtools (>=v.1.10), R (>= 3.0.0) with the package lattice and python2.7 
-to be in the path (for `run.sh`) or in the path variables in the `telomeasure.yml` (for CWL runs).
 
-[GEM](https://github.com/gemtools/gemtools/archive/refs/tags/v1.6.tar.gz)
-
-[Samtools](https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2)
-
-
-
-## Quick start
-
-
-Run Telomeasure from the commandline with shell script. This release of Telomeasure runs with build GRCh38 alignments to the human genome.
-```
-sample_id="sample1"
-out_dir="output/dir/"
-read_length=150
-cram="test.cram" # cram or bam file
-
-./run.sh \
-$sample_id \
-$out_dir \
-$read_length \
-$cram
-```
-
-Run telomeasure with CWL:
-
-```
-cwltool \
-cwl/telomeasure.cwl \
-cwl/telomeasure_example.yml
-
-```
 
 ## Citations
 1. Kim NW, Piatyszek MA, Prowse KR, Harley CB, West MD, Ho PL, Coviello GM, Wright WE, Weinrich SL, Shay JW, Specific association of human telomerase activity with immortal cells and cancer. Science, 1994;266(5193).
