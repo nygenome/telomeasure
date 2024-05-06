@@ -1,11 +1,11 @@
-# Telomeasure
-
+# Telomeasure 
+# This repository is deprecated 
 ```diff
-- WARNING: This repo has been MOVED and updated to support python3 and run with WDL:
+- WARNING: Repo has been MOVED! Now has a docker image and a WDL workflow
 ```
 
-https://bitbucket.nygenome.org/projects/COMPBIO/repos/telomeasure/browse 
-https://bitbucket.nygenome.org/projects/COMPBIO/repos/telomeasure_wdl/browse
+# New scripts:  https://bitbucket.nygenome.org/projects/COMPBIO/repos/telomeasure/browse 
+# New workflow: https://bitbucket.nygenome.org/projects/COMPBIO/repos/telomeasure_wdl/browse
 
 
 Telomeasure calculates estimated telomere length. The output includes three estimates.
